@@ -16,8 +16,10 @@ specifiers:
   next: 13.1.1
   next-themes: ^0.2.1
   postcss: ^8.4.21
+  qs: ^6.11.0
   react: 18.2.0
   react-dom: 18.2.0
+  react-icons: ^4.7.1
   react-tooltip: ^5.4.0
   rehype-highlight: ^6.0.0
   tailwindcss: ^3.2.4
@@ -37,8 +39,10 @@ dependencies:
   mdx-bundler: 9.2.1_esbuild@0.16.15
   next: 13.1.1_biqbaboplfbrettd7655fr4n2y
   next-themes: 0.2.1_q76c2b4vyoegvsbrcwkfvimnai
+  qs: 6.11.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
+  react-icons: 4.7.1_react@18.2.0
   react-tooltip: 5.4.0_biqbaboplfbrettd7655fr4n2y
   rehype-highlight: 6.0.0
   typescript: 4.9.4
@@ -3246,6 +3250,13 @@ packages:
     engines: {node: '>=6'}
     dev: false
 
+  /qs/6.11.0:
+    resolution: {integrity: sha512-MvjoMCJwEarSbUYk5O+nmoSzSutSsTwF85zcHPQ9OrlFoZOYIjaqBAJIqIXjptyD5vThxGq52Xu/MaJzRkIk4Q==}
+    engines: {node: '>=0.6'}
+    dependencies:
+      side-channel: 1.0.4
+    dev: false
+
   /queue-microtask/1.2.3:
     resolution: {integrity: sha512-NuaNSa6flKT5JaSYQzJok04JzTL1CA6aGhv5rfLW3PgqA+M2ChpZQnAC8h8i4ZFkBS8X5RqkDBHA7r4hej3K9A==}
 
@@ -3262,6 +3273,14 @@ packages:
       loose-envify: 1.4.0
       react: 18.2.0
       scheduler: 0.23.0
+    dev: false
+
+  /react-icons/4.7.1_react@18.2.0:
+    resolution: {integrity: sha512-yHd3oKGMgm7zxo3EA7H2n7vxSoiGmHk5t6Ou4bXsfcgWyhfDKMpyKfhHR6Bjnn63c+YXBLBPUql9H4wPJM6sXw==}
+    peerDependencies:
+      react: '*'
+    dependencies:
+      react: 18.2.0
     dev: false
 
   /react-is/16.13.1:
