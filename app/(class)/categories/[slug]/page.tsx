@@ -26,7 +26,7 @@ export default async function Categories({ params, searchParams}: any) {
         CATEGORY <span className="font-xl text-red-500 font-medium">/</span> {category.attributes.name}
       </div>
 
-      <div className="grid md:grid-cols-4 grid-cols-1 gap-5">
+      <div className="grid md:grid-cols-4 grid-cols-1 gap-6">
         {articles.map((article: any) => (
           <ArticleCard article={article} key={article.id} />
         ))}

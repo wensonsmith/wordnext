@@ -26,7 +26,7 @@ export default async function Tags({ params, searchParams}: any) {
         TAGS <span className="font-xl text-red-500 font-medium">/</span> {tagger.attributes.name}
       </div>
 
-      <div className="grid md:grid-cols-4 grid-cols-1 gap-5">
+      <div className="grid md:grid-cols-4 grid-cols-1 gap-6">
         {articles.map((article: any) => (
           <ArticleCard article={article} key={article.id} />
         ))}

@@ -11,7 +11,7 @@ export default function Header() {
             <Logo/>
           </Link>
         </div>
-        <div className='flex-1 flex gap-6 justify-end'>
+        <div className='flex-1 flex gap-6 justify-end items-center'>
           <Link href='/articles'>
             <div className='cursor-pointer hover:bg-white py-1 px-4 rounded transition'>文章</div>
           </Link>

@@ -24,7 +24,7 @@ export default async function Article({ params }: any) {
   const contentHtml = await Remark(article.attributes.content)
 
   return (
-    <div className="bg-gray-100 pt-48">
+    <div className="bg-gray-100 pt-72 -mt-24">
       <div className="container relative m-auto rounded-2xl bg-white min-h-screen-sm p-20">
         <div className="absolute -top-8 left-0 h-8 flex justify-center w-full">
           <div className="w-11/12 bg-gray-200 rounded-t-xl h-full"></div>
