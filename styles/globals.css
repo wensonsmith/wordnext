@@ -1,0 +1,28 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* Your default theme */
+  --background: white;
+  --foreground: black;
+}
+
+[data-theme='dark'] {
+  --background: black;
+  --foreground: white;
+}
+
+@media (min-width: 1536px){
+  .m-auto.container {
+      max-width: 1200px;
+  }
+}
+
+.scale-md {
+  scale: 2;
+}
+
+.content img {
+  max-width: 100%;
+}
