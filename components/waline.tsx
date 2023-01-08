@@ -17,11 +17,11 @@ const Waline = (props: WalineOptions) => {
     })
 
     return () => walineInstanceRef.current?.destroy()
-  }, [])
+  })
 
   useEffect(() => {
     walineInstanceRef.current?.update(props)
-  }, props as any)
+  })
 
   return <div ref={containerRef} />
 }
