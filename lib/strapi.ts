@@ -64,3 +64,8 @@ export const fetchFriends = async (params = {}) => {
   const response = await request('/friends', params)
   return response.json()
 }
+
+export const fetchNavigations =async (id = 1) => {
+  const response = await request(`/navigation/render/${id}`, {type: 'TREE', menu: true})
+  return response.json()
+}
