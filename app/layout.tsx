@@ -2,12 +2,14 @@ import '../styles/globals.css'
 import ThemeProvider from '../components/theme-provider'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import { fetchNavigations } from "../lib/strapi"
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode
 }) {
+  const navigations = await fetchNavigations()
   return (
     <html lang="en">
       {/*
@@ -19,7 +21,7 @@ export default function RootLayout({
         <ThemeProvider>
           <Header/>
           {children}
-          <Footer/>
+          <Footer navigations={navigations}/>
         </ThemeProvider>
       </body>
     </html>

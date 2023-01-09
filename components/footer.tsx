@@ -2,11 +2,8 @@ import dayjs from "dayjs"
 import Link from "next/link"
 import Logo from "./logo"
 import { RiTwitterFill,RiGithubFill,RiMailFill, RiWechatFill,RiRssFill } from 'react-icons/ri'
-import { fetchNavigations } from "../lib/strapi"
 
-export default async function Footer() {
-  const navs = await fetchNavigations()
-
+export default function Footer({navigations}: any) {
   return (
     <div className="mt-10 border-t text-sm">
       <div className='flex justify-between py-20 container m-auto'>
@@ -23,7 +20,7 @@ export default async function Footer() {
             <a href="rss" target="_blank" rel="noreferrer"><RiRssFill/></a>
           </div>
         </div>
-        {navs.map((nav: any) => (
+        {navigations.map((nav: any) => (
           <div className='text-gray-500 leading-loose' key={nav.id}>
             <div className="text-base text-gray-600 mb-1">{nav.title.slice(1)}</div>
             {nav.items.map((item: any) => (
