@@ -9,5 +9,5 @@ export default function ThemeProvider({ children }: {
     <NextTheme attribute="class">
       {children}
     </NextTheme>
-  );
+  )
 }

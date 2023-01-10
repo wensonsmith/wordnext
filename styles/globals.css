@@ -26,3 +26,43 @@
 .content img {
   max-width: 100%;
 }
+
+.wl-comment {
+  margin-bottom: 0;
+}
+
+.wl-comment > .wl-panel {
+  border-radius: 0;
+  padding: 0;
+}
+
+.wl-comment .wl-header {
+  border-radius: 0;
+  border-bottom: 1px solid #ddd;
+}
+
+.wl-comment .wl-editor {
+  width: calc(100% - 2rem);
+  min-height: 0;
+  border-radius: 0;
+  margin: 0;
+  padding: 1rem;
+}
+
+.wl-comment .wl-action:first-child,
+.wl-comment .wl-action:last-child {
+  display: none;
+}
+
+.wl-comment .wl-btn,
+.wl-operation .wl-btn {
+  border-radius: 0;
+}
+
+.wl-comment .wl-btn.primary{
+  padding: 0.5rem 3rem;
+}
+
+.wl-meta-head .wl-count {
+  font-size: 1rem;
+}
