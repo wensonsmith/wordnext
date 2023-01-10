@@ -11,7 +11,7 @@ export default function Articles({ posts }: any) {
       <div className="grid sm:grid-cols-3 sm:px-0 gap-6 grid-cols-1 px-4">
         {posts.map((post: any) => (
           <Link href={`/articles/${post.attributes.slug}`} key={post.id}>
-            <div className="flex p-3 bg-slate-100 rounded hover:shadow-xl transition cursor-pointer ">
+            <div className="flex p-3 bg-gradient-to-br from-slate-100 to-violet-50 rounded hover:shadow-xl transition cursor-pointer ">
               <div className="p-3 min-w-0 flex-1">
                 <div className="mb-2 truncate">{post.attributes.title}</div>
                 <div className="flex justify-between">

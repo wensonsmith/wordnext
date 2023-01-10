@@ -53,11 +53,11 @@ export default async function Home() {
       <div className="absolute left-0 top-0 w-full -z-10">
         <div className="flex h-screen">
           <div className="w-1/4"></div>
-          <div className="flex-1 max-h-80 md:max-h-[75%] bg-gradient-to-br from-cyan-100 to-violet-100 rounded-bl-3xl"></div>
+          <div className="flex-1 max-h-80 md:max-h-[75%] bg-gradient-to-br from-cyan-100 to-violet-100 dark:from-cyan-300 dark:to-violet-200 rounded-bl-3xl"></div>
         </div>
       </div>
 
-      <div className="container m-auto">
+      <div className="container m-auto pb-10">
         <div className="flex">
           <div className="w-3/5 mt-48 ">
             <h1 className="text-8xl">{site.attributes.slogan}</h1>

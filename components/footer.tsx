@@ -5,7 +5,7 @@ import { RiTwitterFill,RiGithubFill,RiMailFill, RiWechatFill,RiRssFill } from 'r
 
 export default function Footer({navigations}: any) {
   return (
-    <div className="mt-10 border-t text-sm">
+    <div className="border-t text-sm dark:border-slate-600">
       <div className='flex justify-between py-20 container m-auto'>
         <div className="w-1/3">
           <Link href='/'>

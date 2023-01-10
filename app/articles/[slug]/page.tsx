@@ -24,16 +24,16 @@ export default async function Article({ params }: any) {
   const contentHtml = await Remark(article.attributes.content)
 
   return (
-    <div className="bg-gray-100 pt-72 -mt-24">
-      <div className="container relative m-auto rounded-2xl bg-white min-h-screen-sm p-20">
+    <div className="bg-gradient-to-tr from-cyan-50 to-violet-50 dark:from-slate-800 dark:to-gray-900 pt-72 -mt-24 pb-10">
+      <div className="container relative m-auto rounded-2xl bg-white min-h-screen-sm p-20 dark:bg-gray-700">
         <div className="absolute -top-8 left-0 h-8 flex justify-center w-full">
-          <div className="w-11/12 bg-gray-200 rounded-t-xl h-full"></div>
+          <div className="w-11/12 bg-slate-100 dark:bg-slate-500 rounded-t-xl h-full"></div>
         </div>
         <div className="absolute -top-16 left-0 h-8 flex justify-center w-full">
-          <div className="w-10/12 bg-gray-300 rounded-t-xl h-full"></div>
+          <div className="w-10/12 bg-slate-200 dark:bg-slate-400 rounded-t-xl h-full"></div>
         </div>
         <div className="absolute -top-24 left-0 h-8 flex justify-center w-full">
-          <div className="w-9/12 bg-gray-400 rounded-t-xl h-full"></div>
+          <div className="w-9/12 bg-slate-300 dark:bg-slate-300 rounded-t-xl h-full"></div>
         </div>
         <div className="flex justify-start">
           <div
@@ -65,7 +65,7 @@ export default async function Article({ params }: any) {
         )}
         <div className="flex justify-center mt-10">
           <div className="w-3/4 content">
-            <article className='prose prose-sm md:prose-base' dangerouslySetInnerHTML={{ __html: contentHtml }} />
+            <article className='prose prose-sm md:prose-base dark:text-white' dangerouslySetInnerHTML={{ __html: contentHtml }} />
           </div>
         </div>
 
