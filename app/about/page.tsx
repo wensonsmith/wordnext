@@ -20,7 +20,7 @@ export default async function About() {
   
   return (
     <>
-      <div className="container m-auto bg-pink-50 h-96 rounded-3xl relative overflow-hidden mt-5">
+      <div className="container m-auto bg-gradient-to-br from-pink-100 to-sky-50 h-96 rounded-3xl relative overflow-hidden mt-5">
         <div className="absolute bottom-0 left-0 w-full p-5 flex flex-wrap">
           {friends.map((friend: any) => (
             <Friend friend={friend} key={friend.id} />
