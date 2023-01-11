@@ -7,13 +7,13 @@ export default function Category({ category }: any) {
   const href = `/categories/${category.attributes.slug}`
   const path = usePathname()
 
+  const activeClass = href == path ? 'bg-gradient-to-br from-green-100 to-indigo-100 dark:from-gray-500 dark:to-gray-600 ring-2 ring-indigo-300': ''
+
   return (
     <Link
       href={href}
       key={category.id}
-      className={`flex flex-1 h-24 rounded-lg cursor-pointer transition bg-white hover:shadow-xl ${
-        href == path ? "!bg-green-100" : ""
-      }`}
+      className={`flex flex-1 h-24 rounded-lg cursor-pointer transition bg-white dark:bg-black ${activeClass}`}
     >
       <div className="w-1/3 flex justify-center items-center h-full">
         <div className="w-16 h-16 bg-red-700 rounded-md"></div>
