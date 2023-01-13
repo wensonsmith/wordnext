@@ -19,7 +19,7 @@ export default async function About() {
   const contentHtml = await Remark(profile.attributes.content, false)
 
   return (
-    <>
+    <div className="px-6 md:px-0">
       <div className="container m-auto bg-gradient-to-br from-pink-100 to-sky-50 dark:from-pink-300 dark:to-sky-100  h-96 rounded-3xl relative overflow-hidden mt-5">
         <div className="absolute bottom-0 left-0 w-full p-5 flex flex-wrap">
           {friends.map((friend: any) => (
@@ -28,8 +28,8 @@ export default async function About() {
         </div>
       </div>
 
-      <div className="container m-auto flex gap-10 mt-10 px-20 pb-10">
-        <div className="w-3/4">
+      <div className="container m-auto md:flex gap-10 mt-10 pb-10 ">
+        <div className="md:w-3/4">
           <article
             className="prose prose-sm md:prose-base"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
@@ -54,6 +54,6 @@ export default async function About() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   )
 }

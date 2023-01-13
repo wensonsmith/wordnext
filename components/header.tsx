@@ -13,10 +13,10 @@ export default function Header() {
         </div>
         <div className='flex-1 flex gap-2 md:gap-6 justify-end items-center'>
           <Link href='/articles'>
-            <div className='cursor-pointer hover:bg-white py-1 px-2 md:px-4 rounded transition'>文章</div>
+            <div className='cursor-pointer py-1 px-2 md:px-4 rounded transition'>文章</div>
           </Link>
           <Link href='/about'>
-            <div className='cursor-pointer hover:bg-white py-1 px-2 md:px-4 rounded transition'>关于</div>
+            <div className='cursor-pointer py-1 px-2 md:px-4 rounded transition'>关于</div>
           </Link>
           <ThemeToggler/>
         </div>

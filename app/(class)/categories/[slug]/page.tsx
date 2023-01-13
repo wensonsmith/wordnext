@@ -21,7 +21,7 @@ export default async function Categories({ params, searchParams}: any) {
   const category = cates.find((item: any) => item.attributes.slug === params?.slug)
 
   return (
-    <div className="container m-auto pt-10">
+    <div className="container m-auto pt-10 px-6 md:px-0">
       <div className="text-xl font-light mb-6 font-mono">
         CATEGORY <span className="font-xl text-red-500 font-medium">/</span> {category.attributes.name}
       </div>

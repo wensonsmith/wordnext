@@ -12,8 +12,8 @@ export default async function Articles() {
   const articles = response.data
 
   return (
-    <div className="container m-auto pt-10">
-      <div className="text-xl font-light mb-6 font-mono">
+    <div className="container m-auto pt-10 px-6 md:px-0">
+      <div className="text-xl font-light mb-6 font-mono dark:text-slate-400">
         ARTICLES <span className="font-xl text-red-500 font-medium">/</span> 全部文章
       </div>
 

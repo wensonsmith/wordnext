@@ -21,8 +21,8 @@ export default async function Tags({ params, searchParams}: any) {
   const tagger = tags.find((item: any) => item.attributes.slug === params?.slug)
 
   return (
-    <div className="container m-auto pt-10">
-      <div className="text-xl font-light mb-6 font-mono">
+    <div className="container m-auto pt-10 px-6 md:px-0">
+      <div className="text-xl font-light mb-6 font-mono dark:text-gray-500">
         TAGS <span className="font-xl text-red-500 font-medium">/</span> {tagger.attributes.name}
       </div>
 
