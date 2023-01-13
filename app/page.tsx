@@ -57,11 +57,11 @@ export default async function Home() {
         </div>
       </div>
 
-      <div className="container m-auto pb-10">
+      <div className="container m-auto pb-10 px-6 md:px-0">
         <div className="flex">
-          <div className="w-3/5 mt-48 ">
-            <h1 className="text-8xl">{site.attributes.slogan}</h1>
-            <div className="text-xl leading-loose">{site.attributes.description}</div>
+          <div className="w-1/2 md:w-2/3 mt-10 md:mt-48">
+            <h1 className="text-6xl md:text-8xl">{site.attributes.slogan}</h1>
+            <div className="text-xl hidden md:block leading-loose">{site.attributes.description}</div>
           </div>
           <div className="flex-1">
             <Image
@@ -72,6 +72,9 @@ export default async function Home() {
             />
           </div>
         </div>
+
+        <div className="mt-4 text-sm md:hidden leading-loose">{site.attributes.description}</div>
+        
 
         <Projects projects={products}/>
 

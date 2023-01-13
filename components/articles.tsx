@@ -5,16 +5,16 @@ import { getStrapiMedia } from "../lib/utils"
 export default function Articles({ posts }: any) {
   return (
     <>
-      <div className="text-xs text-gray-500 mt-24 mb-2 sm:px-0 px-4">
+      <div className="text-xs text-gray-500 mt-10 md:mt-24 mb-2">
         最新文章
       </div>
-      <div className="grid sm:grid-cols-3 sm:px-0 gap-6 grid-cols-1 px-4">
+      <div className="grid sm:grid-cols-3 sm:px-0 gap-6 grid-cols-1">
         {posts.map((post: any) => (
           <Link href={`/articles/${post.attributes.slug}`} key={post.id}>
-            <div className="flex p-3 bg-gradient-to-br from-slate-100 to-violet-50 rounded hover:shadow-xl transition cursor-pointer ">
+            <div className="flex p-3 bg-gradient-to-br from-slate-100 to-violet-100 dark:from-gray-800 dark:bg-slate-900 rounded hover:shadow-xl transition cursor-pointer ">
               <div className="p-3 min-w-0 flex-1">
                 <div className="mb-2 truncate">{post.attributes.title}</div>
-                <div className="flex justify-between">
+                <div className="flex justify-start md:justify-between">
                   {post.attributes.tags.data &&
                     post.attributes.tags.data.map((tag: any) => (
                       <div key={tag.id}>

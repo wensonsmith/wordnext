@@ -4,13 +4,13 @@ import dayjs from "dayjs"
 export default function Memos({ memos }: any) {
   return (
     <>
-      <div className="text-xs text-gray-500 mt-10 mb-2 sm:px-0 px-4">
+      <div className="text-xs text-gray-500 mt-10 mb-2">
         只言片语
       </div>
-      <div className="grid sm:grid-cols-4 gap-6 grid-cols-1 sm:px-0 px-4">
+      <div className="grid sm:grid-cols-4 gap-6 grid-cols-1">
         {memos.map((memo: any) => (
           <div
-            className=" bg-white rounded-sm border p-6 text-gray-600 relative"
+            className="rounded-sm border p-6 text-gray-600 relative dark:text-gray-400 dark:border-slate-500"
             key={memo.id}
           >
             <MdFormatQuote className="float-right text-blue-gray-300 scale-md mx-2" />
