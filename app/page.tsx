@@ -4,7 +4,7 @@ import Projects from '../components/projects'
 import Articles from '../components/articles'
 import Memos from '../components/memos'
 import { fetchSite, fetchArticles, fetchMemos, fetchProjects } from '../lib/strapi'
-import { getStrapiMedia } from '../lib/utils'
+import { getStrapiMedia, getStrapiMediaAlt } from '../lib/utils'
 
 export default async function Home() {
   const siteData = fetchSite({
@@ -24,7 +24,7 @@ export default async function Home() {
     populate: {
       tags: "*",
       cover: {
-        fields: ["url"],
+        fields: ["url", "alternativeText"],
       },
     },
   })
@@ -65,7 +65,7 @@ export default async function Home() {
           </div>
           <div className="flex-1">
             <Image
-              alt=""
+              alt={getStrapiMediaAlt(site.attributes.cover)}
               width="410"
               height="410"
               src={getStrapiMedia(site.attributes.cover)}

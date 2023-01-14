@@ -8,6 +8,14 @@
   }
 }
 
+.prose.prose-sm {
+  max-width: none;
+}
+
+.prose .hljs {
+  background: none;
+}
+
 .scale-md {
   scale: 2;
 }
@@ -21,7 +29,7 @@
 }
 
 .wl-comment > .wl-panel {
-  border-radius: 0;
+  border-radius: 10px;
   padding: 0;
 }
 
@@ -45,7 +53,7 @@
 
 .wl-comment .wl-btn,
 .wl-operation .wl-btn {
-  border-radius: 0;
+  border-radius: 5px;
 }
 
 .wl-comment .wl-btn.primary{

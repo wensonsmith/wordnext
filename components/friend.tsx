@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Poptip from "./poptip"
-import { getStrapiMedia } from "../lib/utils"
+import { getStrapiMedia, getStrapiMediaAlt } from "../lib/utils"
 
 export default function Friend({ friend }: any) {
   return (
@@ -18,13 +18,13 @@ export default function Friend({ friend }: any) {
       >
         <div className="w-10 h-10 rounded-full bg-gray-300 overflow-hidden">
           <Image
+            alt={getStrapiMediaAlt(friend.attributes.avatar)}
             src={getStrapiMedia(friend.attributes.avatar)}
             width={100}
             height={100}
-            alt=""
           />
         </div>
-        <div className="flex items-center mx-2">{friend.attributes.name}</div>
+        <div className="flex items-center mx-2 dark:text-gray-800">{friend.attributes.name}</div>
       </a>
     </>
   )

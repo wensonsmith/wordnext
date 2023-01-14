@@ -31,7 +31,7 @@ export default async function About() {
       <div className="container m-auto md:flex gap-10 mt-10 pb-10 ">
         <div className="md:w-3/4">
           <article
-            className="prose prose-sm md:prose-base"
+            className="prose prose-sm md:prose-base dark:prose-invert"
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
           <div className="mt-10">

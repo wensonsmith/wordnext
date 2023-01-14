@@ -8,7 +8,7 @@ import rehypeStringify from 'rehype-stringify'
 import rehypeToc from '@jsdevtools/rehype-toc'
 import rehypeAutoLinks from 'rehype-autolink-headings'
 import rehypeSlug from 'rehype-slug'
-import 'highlight.js/styles/a11y-dark.css'
+import 'highlight.js/styles/atom-one-dark.css'
 
 const remarkImgLinks = require('@pondorasti/remark-img-links')
 export default async function Remark(content: string, toc: boolean = true) {
@@ -21,7 +21,7 @@ export default async function Remark(content: string, toc: boolean = true) {
   .use(remarkImgLinks, { absolutePath: process.env.NEXT_PUBLIC_IMAGE_URL  })
   .use(remarkRehype)
   .use(rehypeSlug)
-  .use(tocPlugin)
+  // .use(tocPlugin)
   .use(rehypeHighlight)
   .use(rehypeAutoLinks)
   .use(rehypeFormat)

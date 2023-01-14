@@ -1,6 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
-import { getStrapiMedia } from "../lib/utils"
+import { getStrapiMedia, getStrapiMediaAlt } from "../lib/utils"
 
 export default function Articles({ posts }: any) {
   return (
@@ -11,10 +11,10 @@ export default function Articles({ posts }: any) {
       <div className="grid sm:grid-cols-3 sm:px-0 gap-6 grid-cols-1">
         {posts.map((post: any) => (
           <Link href={`/articles/${post.attributes.slug}`} key={post.id}>
-            <div className="flex p-3 bg-gradient-to-br from-slate-100 to-violet-100 dark:from-gray-800 dark:bg-slate-900 rounded hover:shadow-xl transition cursor-pointer ">
+            <div className="flex items-center p-3 bg-gradient-to-br from-slate-100 to-violet-100 dark:from-gray-800 dark:bg-slate-900 rounded hover:shadow-xl transition cursor-pointer ">
               <div className="p-3 min-w-0 flex-1">
                 <div className="mb-2 truncate">{post.attributes.title}</div>
-                <div className="flex justify-start md:justify-between">
+                <div className="flex justify-start">
                   {post.attributes.tags.data &&
                     post.attributes.tags.data.map((tag: any) => (
                       <div key={tag.id}>
@@ -26,13 +26,12 @@ export default function Articles({ posts }: any) {
                 </div>
               </div>
               {post.attributes.cover.data && (
-                <div className="p-3 relative w-20 flex-shrink-0">
+                <div className="p-3 relative w-16 h-16">
                   <Image
-                    alt=""
+                    alt={getStrapiMediaAlt(post.attributes.cover)}
                     src={getStrapiMedia(post.attributes.cover)}
                     className="rounded"
-                    width={80}
-                    height={80}
+                    fill
                   />
                 </div>
               )}

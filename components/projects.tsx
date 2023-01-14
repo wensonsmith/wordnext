@@ -1,6 +1,6 @@
 import Image from "next/image"
 import Link from "next/link"
-import { getStrapiMedia } from "../lib/utils"
+import { getStrapiMedia, getStrapiMediaAlt } from "../lib/utils"
 
 export default function Projects({ projects }: any) {
   return (
@@ -16,7 +16,7 @@ export default function Projects({ projects }: any) {
           >
             <div className="flex-1 mr-2">
               <Image
-                alt=""
+                alt={getStrapiMediaAlt(project.attributes.icon)}
                 src={getStrapiMedia(project.attributes.icon)}
                 width="50"
                 height="50"
