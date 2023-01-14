@@ -2,6 +2,7 @@ import '../styles/globals.css'
 import ThemeProvider from '../components/theme-provider'
 import Header from '../components/header'
 import Footer from '../components/footer'
+import Analytics from '../components/analytics'
 import { fetchNavigations } from "../lib/strapi"
 
 export default async function RootLayout({
@@ -19,6 +20,7 @@ export default async function RootLayout({
       <head>
         <meta charSet="utf-8" />
         <meta name="viewport" content="width=device-width" />
+        <Analytics/>
       </head>
       <body>
         <ThemeProvider>

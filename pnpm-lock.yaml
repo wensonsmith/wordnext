@@ -18,6 +18,7 @@ specifiers:
   next: 13.1.1
   next-seo: ^5.15.0
   next-themes: ^0.2.1
+  nextjs-google-analytics: ^2.2.2
   postcss: ^8.4.21
   qs: ^6.11.0
   react: 18.2.0
@@ -52,6 +53,7 @@ dependencies:
   next: 13.1.1_biqbaboplfbrettd7655fr4n2y
   next-seo: 5.15.0_q76c2b4vyoegvsbrcwkfvimnai
   next-themes: 0.2.1_q76c2b4vyoegvsbrcwkfvimnai
+  nextjs-google-analytics: 2.2.2_next@13.1.1+react@18.2.0
   qs: 6.11.0
   react: 18.2.0
   react-dom: 18.2.0_react@18.2.0
@@ -1729,7 +1731,6 @@ packages:
     engines: {node: ^8.16.0 || ^10.6.0 || >=11.0.0}
     os: [darwin]
     requiresBuild: true
-    dev: true
     optional: true
 
   /function-bind/1.1.1:
@@ -2795,6 +2796,18 @@ packages:
     transitivePeerDependencies:
       - '@babel/core'
       - babel-plugin-macros
+    dev: false
+
+  /nextjs-google-analytics/2.2.2_next@13.1.1+react@18.2.0:
+    resolution: {integrity: sha512-PfA5QZCV+tsCEHG6AE3UXHY8fpHguN+l8t81GztdVW1EtX6UCfu8/rb/X/E+D3oFMY0P3YFQzouSgdm1OhWFiA==}
+    peerDependencies:
+      next: '>=11.0.0'
+      react: '>=17.0.0'
+    dependencies:
+      next: 13.1.1_biqbaboplfbrettd7655fr4n2y
+      react: 18.2.0
+    optionalDependencies:
+      fsevents: 2.3.2
     dev: false
 
   /node-releases/2.0.8:

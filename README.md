@@ -33,7 +33,7 @@ Wenson Blog Powered By NextJS
 - [ ] 全局：文章同步，前后端上线！
 - [ ] 全局：发文自动同步上线
 - [ ] 全局：可以随时发 Meme 的 Alfred 插件
-- [ ] 全局：Google Analytics 适配
+- [X] 全局：Google Analytics 适配 DONE@2023/01/15 00:02
 
 ### 2023-01-08
 
