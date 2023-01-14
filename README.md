@@ -28,11 +28,12 @@ Wenson Blog Powered By NextJS
   - [X] 详情页
   - [X] 文章页 DOONE@2023/01/14 00:41
   - [X] 关于我们
-- [ ] 全局：SEO 基础优化
+- [X] 全局：SEO 基础优化 DONE@2023/01/14 23:52
 - [ ] 全局：Waline 数据迁移
 - [ ] 全局：文章同步，前后端上线！
 - [ ] 全局：发文自动同步上线
 - [ ] 全局：可以随时发 Meme 的 Alfred 插件
+- [ ] 全局：Google Analytics 适配
 
 ### 2023-01-08
 

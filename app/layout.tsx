@@ -11,12 +11,15 @@ export default async function RootLayout({
 }) {
   const navigations = await fetchNavigations()
   return (
-    <html lang="en">
+    <html lang="zh-CN">
       {/*
         <head /> will contain the components returned by the nearest parent
         head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
       */}
-      <head />
+      <head>
+        <meta charSet="utf-8" />
+        <meta name="viewport" content="width=device-width" />
+      </head>
       <body>
         <ThemeProvider>
           <Header/>

@@ -18,7 +18,7 @@ export default async function Article({ params }: any) {
     populate: {
       cover: '*',
       tags: '*',
-      category: '*'
+      category: '*',
     }
   })
 
