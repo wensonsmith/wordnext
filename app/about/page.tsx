@@ -40,16 +40,17 @@ export default async function About() {
         </div>
 
         <div className="flex-1">
-          <div className="flex">
-            <div>
-              <IoPlanet className="text-blue-400 text-lg" />
+          <div className="flex gap-2 items-center bg-slate-50 dark:bg-slate-900 p-4 rounded">
+            <div className="w-1/5 flex justify-center">
+              <IoPlanet className="text-sky-300 text-lg w-2/3 h-2/3" />
             </div>
-            <div className="">
-              <div className="text-lg">
-                该博客已运行{" "}
-                {dayjs(profile.attributes.from).diff(dayjs(), "days")} 天
+            <div className="flex-1">
+              <div className="text-xs text-slate-500">
+                <div className="">博客已在这颗星球存在</div>
+                <span className="text-xl font-bold text-slate-800 dark:text-slate-400">{dayjs().diff(dayjs(profile.attributes.from), "days")}</span> 天
+                <div className="text-xs text-slate-400">Since {profile.attributes.from}</div>
               </div>
-              <div>Since {profile.attributes.from}</div>
+              
             </div>
           </div>
         </div>
