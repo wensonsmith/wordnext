@@ -50,7 +50,7 @@ export default async function Article({ params }: any) {
               <RiCalendarEventLine/>
               {dayjs(article.attributes.createdAt).format("YYYY-MM-DD")}
             </div>
-            <div className='flex items-center gap-1'>
+            <div className='md:flex hidden items-center gap-1 '>
               <RiFolderLine/>
               {article.attributes.category.data.attributes.name}
             </div>

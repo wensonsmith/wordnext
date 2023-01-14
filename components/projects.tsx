@@ -5,7 +5,7 @@ import { getStrapiMedia, getStrapiMediaAlt } from "../lib/utils"
 export default function Projects({ projects }: any) {
   return (
     <>
-      <div className="text-xs text-gray-500 mt-10 mb-2">项目</div>
+      <div className="text-xs text-gray-500 mt-6 mb-2">项目</div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {projects.map((project: any) => (
           <Link
