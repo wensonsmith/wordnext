@@ -3,7 +3,7 @@ import ThemeProvider from '../components/theme-provider'
 import Header from '../components/header'
 import Footer from '../components/footer'
 import Analytics from '../components/analytics'
-import { fetchNavigations } from "../lib/strapi"
+import { fetchNavigations, fetchSite } from "../lib/strapi"
 
 export default async function RootLayout({
   children,
@@ -11,6 +11,14 @@ export default async function RootLayout({
   children: React.ReactNode
 }) {
   const navigations = await fetchNavigations()
+  const site = await fetchSite({
+    populate: {
+      cover: {
+        fields: ["url"],
+      },
+    },
+  })
+
   return (
     <html lang="zh-CN">
       {/*
@@ -26,7 +34,7 @@ export default async function RootLayout({
         <ThemeProvider>
           <Header/>
           {children}
-          <Footer navigations={navigations}/>
+          <Footer navigations={navigations} site={site}/>
         </ThemeProvider>
       </body>
     </html>

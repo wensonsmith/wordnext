@@ -3,7 +3,7 @@ import Link from "next/link"
 import Logo from "./logo"
 import { RiTwitterFill,RiGithubFill,RiMailFill, RiWechatFill,RiRssFill } from 'react-icons/ri'
 
-export default function Footer({navigations}: any) {
+export default function Footer({navigations, site}: any) {
   return (
     <div className="border-t text-sm dark:border-slate-600 dark:text-gray-500">
       <div className='md:flex justify-between py-10 md:py-20 container m-auto px-6 md:px-0'>
@@ -12,7 +12,7 @@ export default function Footer({navigations}: any) {
             <Logo/>
           </Link>
           <div>
-            <div className=''>Copyright</div>
+            <div className=''>{site.data.attributes.copyright}</div>
             <div className='flex gap-5 mt-4 text-lg'>
               <a href="https://twitter.com/wensonsmith" target="_blank" rel="noreferrer"><RiTwitterFill/></a>
               <a href="https://github.com/wensonsmith" target="_blank" rel="noreferrer"><RiGithubFill/></a>
