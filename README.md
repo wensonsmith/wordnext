@@ -36,7 +36,7 @@ Wenson Blog Powered By NextJS
 - [X] 全局：Google Analytics 适配 DONE@2023/01/15 00:02
 - [X] 文章列表页：分页 Pagination DONE@2023/01/16 22:34
 - [ ] 解决 Supabase 超过一周会暂停的问题
-- [ ] 全局： Next.js 301 调整，之前阅读量比较高的文章进行跳转
+- [X] 全局：Next.js 301 调整，之前阅读量比较高的文章进行跳转
 - [X] 文章列表页：tag 多的时候，在手机上变形问题
 - [X] 全局：优化 Favicon DONE 2023/01/16 22:44
 - [ ] 全局：优化接口调用参数，减少不必要的返回字段
