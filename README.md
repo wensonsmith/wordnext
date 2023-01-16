@@ -34,7 +34,7 @@ Wenson Blog Powered By NextJS
 - [ ] 全局：发文自动同步上线
 - [ ] 全局：可以随时发 Meme 的 Alfred 插件
 - [X] 全局：Google Analytics 适配 DONE@2023/01/15 00:02
-- [ ] 文章列表页：分页 Pagination
+- [X] 文章列表页：分页 Pagination DONE@2023/01/16 22:34
 - [ ] 解决 Supabase 超过一周会暂停的问题
 - [ ] 全局： Next.js 301 调整，之前阅读量比较高的文章进行跳转
 - [ ] 文章列表页：tag 多的时候，在手机上变形问题
