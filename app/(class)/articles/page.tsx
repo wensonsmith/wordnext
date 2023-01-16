@@ -29,9 +29,7 @@ export default async function Articles({ searchParams }: any) {
         ))}
       </div>
 
-      { pagination.pageCount > 1 && (
-        <Pagination pagination={pagination}/>
-      )}
+      <Pagination pagination={pagination}/>
     </div>
   )
 }

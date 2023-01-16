@@ -13,7 +13,7 @@ export default function Category({ tag }: any) {
     <Link
       href={href}
       key={tag.id}
-      className={` dark:border-slate-400 dark:text-slate-400 border cursor-pointer px-4 py-2 rounded-full mr-2 mb-2 ${activeClass}`}
+      className={`min-w-fit text-sm dark:border-slate-400 dark:text-slate-400 border cursor-pointer px-4 py-1 rounded-full mr-1 mb-1 ${activeClass}`}
     >
       # {tag.attributes.name}
     </Link>

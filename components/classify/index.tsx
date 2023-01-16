@@ -9,7 +9,7 @@ export default function Classify({ categories, tags }: any) {
           <Category category={category} key={category.id} />
         ))}
       </div>
-      <div className="flex mt-10">
+      <div className="flex mt-10 flex-wrap">
         {tags.map((tag: any) => (
           <Tag tag={tag} key={tag.id} />
         ))}

@@ -2,6 +2,7 @@
 
 import { useRouter, usePathname } from 'next/navigation'
 import { HiOutlineArrowLongRight, HiOutlineArrowLongLeft } from 'react-icons/hi2'
+import { GiSpiralLollipop } from 'react-icons/gi'
 
 type MetaPagination = {
   page: number;
@@ -30,16 +31,22 @@ export default function Pagination( { pagination }: { pagination: MetaPagination
   }
 
   return (
-    <div className="flex justify-center mb-6 mt-4" onClick={() => pageNav('prev')}>
-      <div className="p-2 flex justify-start cursor-pointer group">
-        <HiOutlineArrowLongLeft className="group-hover:-translate-x-3 transition text-lg"/>
-        <div className="text-sm ml-1">Prev</div>
-      </div>
-      <div className="p-2 text-sm border-r border-l">{pagination.page} <span className="text-slate-500 text-xs">/ {pagination.pageCount}</span></div>
-      <div className="p-2 flex justify-end cursor-pointer group" onClick={() => pageNav('next')}>
-        <div className="text-sm mr-1">Next</div>
-        <HiOutlineArrowLongRight className="group-hover:translate-x-3 transition text-lg"/>
-      </div>
-    </div>
+    <>
+      { pagination.pageCount > 1 ? (
+        <div className="flex justify-center mb-6 mt-4" onClick={() => pageNav('prev')}>
+          <div className="p-2 flex justify-start cursor-pointer group">
+            <HiOutlineArrowLongLeft className="group-hover:-translate-x-3 transition text-lg"/>
+            <div className="text-sm ml-1">Prev</div>
+          </div>
+          <div className="p-2 text-sm border-r border-l">{pagination.page} <span className="text-slate-500 text-xs">/ {pagination.pageCount}</span></div>
+          <div className="p-2 flex justify-end cursor-pointer group" onClick={() => pageNav('next')}>
+            <div className="text-sm mr-1">Next</div>
+            <HiOutlineArrowLongRight className="group-hover:translate-x-3 transition text-lg"/>
+          </div>
+        </div>
+      ) : (
+        <div className='mb-6 mt-4 text-slate-500 flex gap-2 items-center justify-center'> <GiSpiralLollipop/> That&apos;s all </div>
+      )}
+    </>
   )
 }

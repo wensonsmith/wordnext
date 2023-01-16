@@ -44,9 +44,7 @@ export default async function Categories({ params, searchParams}: any) {
         <div className="text-center text-gray-500 py-10">文章还在脑海酝酿</div>
       )}
 
-      { pagination.pageCount > 1 && (
-        <Pagination pagination={pagination}/>
-      )}
+      <Pagination pagination={pagination}/>
     </div>
   )
 }
