@@ -9,8 +9,12 @@ import Back from '../../../components/back'
 
 const WalineServer = process.env.NEXT_PUBLIC_WALINE_URL as string
 
-export default async function Article({ params }: any) {
+export async function generateStaticParams() {
+  const articles = await fetchArticles({ fields: ["slug"] })
+  return articles.data.map((item: any) => { return {slug: item.attributes.slug} })
+}
 
+export default async function Article({ params }: any) {
   const articles = await fetchArticles({
     filters: {
       slug: params?.slug,
