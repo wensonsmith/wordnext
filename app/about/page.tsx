@@ -35,7 +35,7 @@ export default async function About() {
             dangerouslySetInnerHTML={{ __html: contentHtml }}
           />
           <div className="mt-10">
-            <Waline serverURL={WalineServer} path="/about" />
+            <Waline serverURL={WalineServer} path="about" />
           </div>
         </div>
 
