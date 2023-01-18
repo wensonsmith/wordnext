@@ -15,9 +15,9 @@
     "@types/node": "18.11.18",
     "@types/react": "18.0.26",
     "@types/react-dom": "18.0.10",
-    "@waline/client": "^2.14.5",
+    "@waline/client": "^2.14.7",
     "dayjs": "^1.11.7",
-    "esbuild": "^0.16.15",
+    "esbuild": "^0.16.17",
     "eslint": "8.31.0",
     "eslint-config-next": "13.1.1",
     "highlight.js": "^11.7.0",
@@ -29,7 +29,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1",
-    "react-tooltip": "^5.4.0",
+    "react-tooltip": "^5.5.1",
     "rehype-autolink-headings": "^6.1.1",
     "rehype-format": "^4.0.1",
     "rehype-highlight": "^6.0.0",
@@ -42,7 +42,7 @@
     "unified": "^10.1.2"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.8",
+    "@tailwindcss/typography": "^0.5.9",
     "autoprefixer": "^10.4.13",
     "postcss": "^8.4.21",
     "tailwindcss": "^3.2.4"

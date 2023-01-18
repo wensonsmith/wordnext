@@ -64,9 +64,9 @@ export default async function Article({ params }: any) {
                 <div key={tag.id}>{tag.attributes.name}</div>
               ))}
             </div>
-            <div className='flex items-center gap-1'>
+            <div className='items-center gap-1 hidden'>
               <RiBookOpenLine/>
-              <div className="waline-pageview-count" data-path={params?.slug}/>
+              <div className="waline-pageview-coun"/>
             </div>
           </div>
         </div>
