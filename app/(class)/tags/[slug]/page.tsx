@@ -2,6 +2,11 @@ import { fetchArticles, fetchTags } from "../../../../lib/strapi"
 import ArticleCard from "../../../../components/article-card"
 import Pagination from "../../../../components/pagination"
 
+export async function generateStaticParams() {
+  const tags = await fetchTags({ fields: ["slug"] })
+  return tags.data.map((item: any) => { return {slug: item.attributes.slug} })
+}
+
 export default async function Tags({ params, searchParams}: any) {
   const response = await fetchArticles({
     pagination: {
