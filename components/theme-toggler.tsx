@@ -15,8 +15,8 @@ export default function ThemeToggler() {
   if (!mounted) return null
 
   if (theme === 'dark') {
-    return <RiSunLine onClick={() => setTheme('light')}/>
+    return <RiSunLine className='cursor-pointer' onClick={() => setTheme('light')}/>
   } else {
-    return <RiMoonFill onClick={() => setTheme('dark')}/>
+    return <RiMoonFill className='cursor-pointer' onClick={() => setTheme('dark')}/>
   }
 }
