@@ -27,9 +27,11 @@ export default function Footer({navigations, site}: any) {
           <div className='text-gray-500 leading-loose' key={nav.id}>
             <div className="text-base text-gray-600 mb-1">{nav.title.slice(1)}</div>
             {nav.items.map((item: any) => (
-              <Link href={item.path} target='_blank' key={item.id}>
-                {item.title.slice(1)}
-              </Link>
+              <div key={item.id}>
+                <Link href={item.path} target='_blank'>
+                  {item.title.slice(1)}
+                </Link>
+              </div>
             ))}
           </div>
         ))}
