@@ -1,9 +1,6 @@
-'use client'
-
-import { GoogleAnalytics } from "nextjs-google-analytics"
+import { GoogleAnalytics } from "@next/third-parties/google"
 
 export default function Analytics() {
-  return (
-    <GoogleAnalytics trackPageViews/>
-  )
+  const gaId = process.env.NEXT_PUBLIC_GA_MEASUREMENT_ID
+  return gaId ? <GoogleAnalytics gaId={gaId} /> : null
 }

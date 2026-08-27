@@ -1,24 +1,15 @@
 import Classify from "../../components/classify"
 import { fetchCategories, fetchTags } from "../../lib/strapi"
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const categoriesData = fetchCategories({
-    populate: {
-      icon: {
-        fields: ['url', 'alternativeText']
-      }
-    }
-  })
-  const tagsData = fetchTags({})
-
-  const response = await Promise.all([categoriesData, tagsData])
-  const [categories, tags] = response.map((res) => res.data)
-
-  //dark:from-sky-300 dark:to-lime-100
+export default async function ClassLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const [categoriesResponse, tagsResponse] = await Promise.all([
+    fetchCategories({
+      populate: {
+        icon: { fields: ["url", "alternativeText", "name"] },
+      },
+    }),
+    fetchTags(),
+  ])
 
   return (
     <>
@@ -27,7 +18,7 @@ export default async function RootLayout({
           <div className="text-3xl font-normal font-serif mb-12 dark:text-slate-800">
             沉淀文字以经得时间考验
           </div>
-          <Classify categories={categories} tags={tags} />
+          <Classify categories={categoriesResponse.data} tags={tagsResponse.data} />
         </div>
       </div>
       {children}

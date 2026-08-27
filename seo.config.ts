@@ -1,28 +1,23 @@
-// next-seo.config.ts
-import type { NextSeoProps } from "next-seo"
+import type { Metadata } from "next"
 
-export const NEXT_SEO_DEFAULT: NextSeoProps = {
-  title: "Wenson - Keep looking don't settle",
-  description: "这里是 Wenson 的博客，记录学习到的方法和知识，创造有趣的项目，书写生活感悟",
+export const SITE_METADATA: Metadata = {
+  metadataBase: new URL("https://iwenson.com"),
+  title: {
+    default: "Wenson - Keep looking, don't settle",
+    template: "%s | Wenson",
+  },
+  description: "这里是 Wenson 的博客，记录学到的方法和知识，创造有趣的项目，书写生活感悟。",
   openGraph: {
     type: "website",
     locale: "zh_CN",
     url: "https://iwenson.com",
+    siteName: "Wenson",
     title: "I'm Wenson",
-    description: "这里是 Wenson 的博客，记录学习到的方法和知识，创造有趣的项目，书写生活感悟",
-    images: [
-      {
-        url: "https://iwenson.com/",
-        width: 800,
-        height: 800,
-        alt: "Wenson's Blog",
-        type: "image/jpeg",
-      },
-    ],
+    description: "记录学到的方法和知识，创造有趣的项目，书写生活感悟。",
   },
   twitter: {
-    handle: "@wensonsmith",
+    card: "summary_large_image",
+    creator: "@wensonsmith",
     site: "@wensonsmith",
-    cardType: "summary_large_image",
   },
 }

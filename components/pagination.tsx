@@ -1,52 +1,48 @@
-'use client'
+"use client"
 
-import { useRouter, usePathname } from 'next/navigation'
-import { HiOutlineArrowLongRight, HiOutlineArrowLongLeft } from 'react-icons/hi2'
-import { GiSpiralLollipop } from 'react-icons/gi'
+import { usePathname, useRouter } from "next/navigation"
+import { GiSpiralLollipop } from "react-icons/gi"
+import { HiOutlineArrowLongLeft, HiOutlineArrowLongRight } from "react-icons/hi2"
 
-type MetaPagination = {
-  page: number;
-  pageSize: number;
-  pageCount: number;
-  total: number;
-}
+import type { Pagination as PaginationData } from "../lib/strapi-types"
 
-export default function Pagination( { pagination }: { pagination: MetaPagination} ) {
+export default function Pagination({ pagination }: { pagination: PaginationData }) {
   const router = useRouter()
   const path = usePathname()
-  const pageNav = (type: string) => {
-    if (type === 'next') {
-      if (pagination.page === pagination.pageCount) {
-        return
-      }
-      const href = `${path}?page=${pagination.page + 1}`
-      router.push(href)
-    } else {
-      if (pagination.page === 1) {
-        return
-      }
-      const href = `${path}?page=${pagination.page - 1}`
-      router.push(href)
-    }
+
+  const goToPage = (page: number) => router.push(`${path}?page=${page}`)
+
+  if (pagination.pageCount <= 1) {
+    return (
+      <div className="mb-6 mt-4 text-slate-500 flex gap-2 items-center justify-center">
+        <GiSpiralLollipop /> That&apos;s all
+      </div>
+    )
   }
 
   return (
-    <>
-      { pagination.pageCount > 1 ? (
-        <div className="flex justify-center mb-6 mt-4" onClick={() => pageNav('prev')}>
-          <div className="p-2 flex justify-start cursor-pointer group">
-            <HiOutlineArrowLongLeft className="group-hover:-translate-x-3 transition text-lg"/>
-            <div className="text-sm ml-1">Prev</div>
-          </div>
-          <div className="p-2 text-sm border-r border-l">{pagination.page} <span className="text-slate-500 text-xs">/ {pagination.pageCount}</span></div>
-          <div className="p-2 flex justify-end cursor-pointer group" onClick={() => pageNav('next')}>
-            <div className="text-sm mr-1">Next</div>
-            <HiOutlineArrowLongRight className="group-hover:translate-x-3 transition text-lg"/>
-          </div>
-        </div>
-      ) : (
-        <div className='mb-6 mt-4 text-slate-500 flex gap-2 items-center justify-center'> <GiSpiralLollipop/> That&apos;s all </div>
-      )}
-    </>
+    <div className="flex justify-center mb-6 mt-4">
+      <button
+        type="button"
+        disabled={pagination.page <= 1}
+        className="p-2 flex justify-start cursor-pointer group disabled:cursor-not-allowed disabled:opacity-40"
+        onClick={() => goToPage(pagination.page - 1)}
+      >
+        <HiOutlineArrowLongLeft className="group-hover:-translate-x-3 transition text-lg" />
+        <span className="text-sm ml-1">Prev</span>
+      </button>
+      <div className="p-2 text-sm border-r border-l">
+        {pagination.page} <span className="text-slate-500 text-xs">/ {pagination.pageCount}</span>
+      </div>
+      <button
+        type="button"
+        disabled={pagination.page >= pagination.pageCount}
+        className="p-2 flex justify-end cursor-pointer group disabled:cursor-not-allowed disabled:opacity-40"
+        onClick={() => goToPage(pagination.page + 1)}
+      >
+        <span className="text-sm mr-1">Next</span>
+        <HiOutlineArrowLongRight className="group-hover:translate-x-3 transition text-lg" />
+      </button>
+    </div>
   )
 }

@@ -1,32 +1,36 @@
 import Image from "next/image"
 import Link from "next/link"
+
+import type { Project } from "../lib/strapi-types"
 import { getStrapiMedia, getStrapiMediaAlt } from "../lib/utils"
 
-export default function Projects({ projects }: any) {
+export default function Projects({ projects }: { projects: Project[] }) {
   return (
     <>
       <div className="text-xs text-gray-500 mt-6 mb-2">项目</div>
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-        {projects.map((project: any) => (
+        {projects.map((project) => (
           <Link
-            href={project.attributes.link}
+            href={project.link}
             target="_blank"
-            key={project.id}
+            key={project.documentId}
             className="bg-white dark:bg-gray-800 rounded-md shadow-md p-4 flex items-center cursor-pointer hover:shadow-2xl transition"
           >
             <div className="flex-1 mr-2">
-              <Image
-                alt={getStrapiMediaAlt(project.attributes.icon)}
-                src={getStrapiMedia(project.attributes.icon)}
-                width="50"
-                height="50"
-                className="rounded-lg"
-              />
+              {project.icon && (
+                <Image
+                  alt={getStrapiMediaAlt(project.icon)}
+                  src={getStrapiMedia(project.icon)}
+                  width={50}
+                  height={50}
+                  className="rounded-lg"
+                />
+              )}
             </div>
             <div className="w-4/5">
-              <div className="truncate overflow-hidden">{project.attributes.name}</div>
+              <div className="truncate overflow-hidden">{project.name}</div>
               <div className="hidden md:block text-sm text-gray-500 dark:text-gray-400 mt-1 break-all">
-                {project.attributes.description}
+                {project.description}
               </div>
             </div>
           </Link>

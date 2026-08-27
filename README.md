@@ -1,50 +1,51 @@
 # WordNext
 
-Wenson Blog Powered By NextJS
+基于 Next.js 16、React 19 和 Strapi v5 的博客前端。
 
-## 1.0.0
+## 本地开发
 
-- [X] 全局：完善页脚  DONE @2023/01/10 00:09
-- [X] 首页：右上角背景颜色优化 DONE @2023/01/10 22:39
-- [X] 详情页：优化 Waline 样式 DONE @2023/01/10 23:42
-- [X] 详情页：添加 Tag 和 分类信息 DONE @2023/01/11 23:11
-- [X] 详情页：优化代码块样式，增加代码类型，行数
-- [X] 全局：手机界面样式适配 DONE@2023/01/14 17:55
-  - [X] 首页 DOONE@2023/01/14 00:41
-  - [X] 详情页
-  - [X] 文章页 DOONE@2023/01/14 00:41
-  - [X] 关于我们
-- [X] 全局：规划文章分类和标签 DONE@2023/01/14 21:42
-- [X] 全局：文章分类的图标和介绍 DONE@2023/01/14 21:42
-- [X] 文章页：文章列表样式优化
-- [X] 文章页：侧边栏内容优化
-- [X] 文章页：分类和标签选中后的样式优化
-- [X] 文章页：添加页尾
-- [X] 关于页：侧边栏内容优化
-- [X] 关于页：Waline 评论样式优化 DONE @2023/01/10 23:42
-- [X] 关于页：添加页尾
-- [X] 全局：暗黑模式适配 DONE@2023/01/14 17:55
-  - [X] 首页 DOONE@2023/01/14 00:41
-  - [X] 详情页
-  - [X] 文章页 DOONE@2023/01/14 00:41
-  - [X] 关于我们
-- [X] 全局：SEO 基础优化 DONE@2023/01/14 23:52
-- [X] 全局：Waline 数据迁移
-- [X] 全局：文章同步，前后端上线！DONE@2023/01/15 23:44
-- [ ] 全局：发文自动同步上线
-- [ ] 全局：可以随时发 Meme 的 Alfred 插件
-- [X] 全局：Google Analytics 适配 DONE@2023/01/15 00:02
-- [X] 文章列表页：分页 Pagination DONE@2023/01/16 22:34
-- [X] 解决 Supabase 超过一周会暂停的问题
-- [X] 全局：Next.js 301 调整，之前阅读量比较高的文章进行跳转
-- [X] 文章列表页：tag 多的时候，在手机上变形问题
-- [X] 全局：优化 Favicon DONE 2023/01/16 22:44
-- [ ] 全局：优化接口调用参数，减少不必要的返回字段
-- [X] 全局：优化分类和 tag 页的、文章页 staticPath
-- [ ] 全局：修复文章和图片连接
-- [X] 全局：修复浏览量和评论里的 n 符号
-- [ ] 全局：修复评论里头像不显示的问题
+要求 Node.js 20.9 或更高版本，包管理器使用 pnpm 10。
 
-### 2023-01-08
+```bash
+pnpm install
+```
 
-- [x] 使用 Next.js 13 重构
+复制 `.env.example` 为 `.env`，填写 Strapi API Token 和其他服务地址。`.env` 只保留在本地，不要提交到 Git。
+
+```bash
+pnpm dev
+```
+
+默认访问 `http://localhost:3000`。
+
+## 修改后的检查流程
+
+每次修改完成后依次运行：
+
+```bash
+pnpm typecheck
+pnpm lint
+pnpm build
+```
+
+建议从当前主分支创建功能分支，再提交和推送：
+
+```bash
+git switch -c codex/功能名称
+git add .
+git commit -m "feat: 修改说明"
+git push -u origin codex/功能名称
+```
+
+## Strapi v5 数据约定
+
+所有 Strapi 请求集中在 `lib/strapi.ts`，响应类型集中在 `lib/strapi-types.ts`。Strapi v5 的字段直接位于实体上，例如 `article.title`、`article.tags`，不再使用 v4 的 `article.attributes.title` 或 `relation.data`。
+
+如果以后在 Strapi 增加或修改字段：
+
+1. 更新 `lib/strapi-types.ts` 中对应类型。
+2. 在 `lib/strapi.ts` 或页面查询中补充 `fields`、`populate`、`filters`。
+3. 更新使用该字段的页面或组件。
+4. 运行完整检查流程。
+
+部署环境至少需要配置 `NEXT_STRAPI_URL` 和 `NEXT_STRAPI_TOKEN`；媒体使用相对 URL 时，还要配置 `NEXT_PUBLIC_IMAGE_URL`。

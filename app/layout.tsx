@@ -1,43 +1,45 @@
-import '../styles/globals.css'
-import ThemeProvider from '../components/theme-provider'
-import Header from '../components/header'
-import Footer from '../components/footer'
-import Analytics from '../components/analytics'
-import { fetchNavigations, fetchSite } from "../lib/strapi"
-import ScrollUp from '../components/scroll-up'
+import type { Metadata, Viewport } from "next"
 
-export default async function RootLayout({
-  children,
-}: {
-  children: React.ReactNode
-}) {
-  const navigations = await fetchNavigations()
-  const site = await fetchSite({
-    populate: {
-      cover: {
-        fields: ["url"],
+import Analytics from "../components/analytics"
+import Footer from "../components/footer"
+import Header from "../components/header"
+import ScrollUp from "../components/scroll-up"
+import ThemeProvider from "../components/theme-provider"
+import { fetchNavigations, fetchSite } from "../lib/strapi"
+import { SITE_METADATA } from "../seo.config"
+import "../styles/globals.css"
+
+export const metadata: Metadata = SITE_METADATA
+
+export const viewport: Viewport = {
+  width: "device-width",
+  initialScale: 1,
+}
+
+export default async function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
+  const [navigations, siteResponse] = await Promise.all([
+    fetchNavigations(),
+    fetchSite({
+      populate: {
+        cover: { fields: ["url", "alternativeText"] },
       },
-    },
-  })
+    }),
+  ])
+
+  if (!siteResponse.data) {
+    throw new Error("Strapi did not return site settings")
+  }
 
   return (
-    <html lang="zh-CN">
-      {/*
-        <head /> will contain the components returned by the nearest parent
-        head.tsx. Find out more at https://beta.nextjs.org/docs/api-reference/file-conventions/head
-      */}
-      <head>
-        <meta charSet="utf-8" />
-        <meta name="viewport" content="width=device-width" />
-        <Analytics/>
-      </head>
+    <html lang="zh-CN" suppressHydrationWarning>
       <body>
         <ThemeProvider>
-          <Header/>
+          <Header />
           {children}
-          <Footer navigations={navigations} site={site}/>
-          <ScrollUp/>
+          <Footer navigations={navigations} site={siteResponse.data} />
+          <ScrollUp />
         </ThemeProvider>
+        <Analytics />
       </body>
     </html>
   )

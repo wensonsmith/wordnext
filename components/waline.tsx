@@ -1,39 +1,32 @@
-'use client'
+"use client"
 
-import React, { useEffect, useRef } from 'react'
-import { init } from '@waline/client'
-import '@waline/client/dist/waline.css'
+import { init } from "@waline/client"
+import type { WalineInitOptions } from "@waline/client"
+import { useTheme } from "next-themes"
+import { useEffect, useRef } from "react"
 
-import type { WalineInstance, WalineInitOptions } from '@waline/client'
-import { useTheme } from 'next-themes'
+import "@waline/client/dist/waline.css"
 
-export type WalineOptions = Omit<WalineInitOptions, 'el'> & { path: string}
+export type WalineOptions = Omit<WalineInitOptions, "el"> & { path: string }
 
-const Waline = (props: WalineOptions) => {
-  const walineInstanceRef = useRef<WalineInstance | null>(null)
-  const containerRef = React.createRef<HTMLDivElement>()
-  const { theme } = useTheme()
+export default function Waline(props: WalineOptions) {
+  const containerRef = useRef<HTMLDivElement>(null)
+  const { resolvedTheme } = useTheme()
 
   useEffect(() => {
-    walineInstanceRef.current = init({
+    const instance = init({
       ...props,
       el: containerRef.current,
       search: false,
       pageview: true,
-      lang: 'zh',
+      lang: "zh",
       imageUploader: false,
       copyright: false,
-      dark: theme === 'dark',
+      dark: resolvedTheme === "dark",
     })
 
-    return () => walineInstanceRef.current?.destroy()
-  })
-
-  useEffect(() => {
-    walineInstanceRef.current?.update(props)
-  })
+    return () => instance?.destroy()
+  }, [props, resolvedTheme])
 
   return <div ref={containerRef} />
 }
-
-export default Waline

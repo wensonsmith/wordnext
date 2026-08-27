@@ -1,71 +1,76 @@
-const qs = require('qs')
+import "server-only"
 
-const request = (path: string, params: Object = {}) => {
-  const host = process.env.NEXT_STRAPI_URL
+import qs from "qs"
+
+import type {
+  Article,
+  Category,
+  Friend,
+  Memo,
+  Navigation,
+  Profile,
+  Project,
+  Site,
+  StrapiCollectionResponse,
+  StrapiQuery,
+  StrapiSingleResponse,
+  Tag,
+} from "./strapi-types"
+
+const request = async <T>(path: string, params: StrapiQuery = {}): Promise<T> => {
+  const host = process.env.NEXT_STRAPI_URL?.replace(/\/$/, "")
   const token = process.env.NEXT_STRAPI_TOKEN
 
-  const query = qs.stringify(
-    params,
-    { encodeValuesOnly: true } // prettify URL
-  )
+  if (!host) {
+    throw new Error("NEXT_STRAPI_URL is not configured")
+  }
 
-  const api = `${host}/api${path}?${query}`
+  const query = qs.stringify(params, { encodeValuesOnly: true })
+  const api = `${host}/api${path}${query ? `?${query}` : ""}`
+  const timeout = Number(process.env.NEXT_TIMEOUT ?? 10_000)
+  const headers: HeadersInit = token
+    ? { authorization: `Bearer ${token}` }
+    : {}
 
-  console.log(api)
-
-  return fetch(api, {
-    headers: {
-      authorization: `Bearer ${token}`
-    }
+  const response = await fetch(api, {
+    headers,
+    cache: "no-store",
+    signal: AbortSignal.timeout(timeout),
   })
+
+  if (!response.ok) {
+    throw new Error(`Strapi request failed (${response.status}) for ${path}`)
+  }
+
+  return response.json() as Promise<T>
 }
 
-export const fetchSite = async (params = {}) => {
-  const response = await request('/site', params)
-  return response.json()
-}
+export const fetchSite = (params: StrapiQuery = {}) =>
+  request<StrapiSingleResponse<Site>>("/site", params)
 
-export const fetchArticles = async (params: any) => {
-  const response =  await request('/articles', params)
-  return response.json()
-}
+export const fetchArticles = (params: StrapiQuery = {}) =>
+  request<StrapiCollectionResponse<Article>>("/articles", params)
 
-export const fetchCategories = async (params= {}) => {
-  const response = await request('/categories', params)
-  return response.json()
-}
+export const fetchCategories = (params: StrapiQuery = {}) =>
+  request<StrapiCollectionResponse<Category>>("/categories", params)
 
-export const fetchArticle = async (id: number) => {
-  const response = await request(`/articles/${id}`)
-  return response.json()
-}
+export const fetchArticle = (documentId: string, params: StrapiQuery = {}) =>
+  request<StrapiSingleResponse<Article>>(`/articles/${documentId}`, params)
 
-export const fetchProfile = async () => {
-  const response = await request('/profile')
-  return response.json()
-}
+export const fetchProfile = (params: StrapiQuery = {}) =>
+  request<StrapiSingleResponse<Profile>>("/profile", params)
 
-export const fetchMemos = async (params = {}) => {
-  const response = await request('/memos', params)
-  return response.json()
-}
+export const fetchMemos = (params: StrapiQuery = {}) =>
+  request<StrapiCollectionResponse<Memo>>("/memos", params)
 
-export const fetchTags = async (params = {}) => {
-  const response = await request('/tags', params)
-  return response.json()
-}
+export const fetchTags = (params: StrapiQuery = {}) =>
+  request<StrapiCollectionResponse<Tag>>("/tags", params)
 
-export const fetchProjects = async (params = {}) => {
-  const response = await request('/projects', params)
-  return response.json()
-}
+export const fetchProjects = (params: StrapiQuery = {}) =>
+  request<StrapiCollectionResponse<Project>>("/projects", params)
 
-export const fetchFriends = async (params = {}) => {
-  const response = await request('/friends', params)
-  return response.json()
-}
+export const fetchFriends = (params: StrapiQuery = {}) =>
+  request<StrapiCollectionResponse<Friend>>("/friends", params)
 
-export const fetchNavigations =async (id = 1) => {
-  const response = await request(`/navigation/render/${id}`, {type: 'TREE', menu: true})
-  return response.json()
-}
+export const fetchNavigations = (id = 1) =>
+  request<Navigation[]>(`/navigation/render/${id}`, { type: "TREE", menu: true })
