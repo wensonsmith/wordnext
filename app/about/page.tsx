@@ -14,7 +14,11 @@ export const metadata: Metadata = {
 
 export default async function About() {
   const [friendsResponse, profileResponse] = await Promise.all([
-    fetchFriends({ populate: { avatar: "*" } }),
+    fetchFriends({
+      populate: {
+        avatar: { fields: ["url", "alternativeText", "name"] },
+      },
+    }),
     fetchProfile(),
   ])
 

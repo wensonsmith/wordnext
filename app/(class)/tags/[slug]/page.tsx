@@ -35,7 +35,7 @@ export default async function TagPage({ params, searchParams }: TagPageProps) {
       pagination: { page: getPageNumber(query.page), pageSize: 12 },
       sort: ["createdAt:desc"],
       filters: { tags: { slug } },
-      populate: { tags: "*" },
+      populate: { tags: { fields: ["name", "slug"] } },
     }),
     getTagBySlug(slug),
   ])

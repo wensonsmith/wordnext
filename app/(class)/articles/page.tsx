@@ -14,7 +14,7 @@ export default async function Articles({ searchParams }: { searchParams: PageSea
   const response = await fetchArticles({
     pagination: { page: getPageNumber(query.page), pageSize: 12 },
     sort: ["createdAt:desc"],
-    populate: { tags: "*" },
+    populate: { tags: { fields: ["name", "slug"] } },
   })
 
   return (

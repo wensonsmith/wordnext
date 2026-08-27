@@ -19,7 +19,11 @@ const getArticleBySlug = cache(async (slug: string) => {
   const response = await fetchArticles({
     filters: { slug },
     pagination: { page: 1, pageSize: 1 },
-    populate: { cover: "*", tags: "*", category: "*" },
+    populate: {
+      cover: { fields: ["url", "alternativeText", "name"] },
+      tags: { fields: ["name", "slug"] },
+      category: { fields: ["name", "slug"] },
+    },
   })
   return response.data[0] ?? null
 })

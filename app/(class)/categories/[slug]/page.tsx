@@ -35,7 +35,7 @@ export default async function CategoryPage({ params, searchParams }: CategoryPag
       pagination: { page: getPageNumber(query.page), pageSize: 12 },
       sort: ["createdAt:desc"],
       filters: { category: { slug } },
-      populate: { tags: "*" },
+      populate: { tags: { fields: ["name", "slug"] } },
     }),
     getCategoryBySlug(slug),
   ])

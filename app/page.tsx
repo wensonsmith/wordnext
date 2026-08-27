@@ -18,7 +18,7 @@ export default async function Home() {
       sort: ["createdAt:desc"],
       pagination: { page: 1, pageSize: 9 },
       populate: {
-        tags: "*",
+        tags: { fields: ["name", "slug"] },
         cover: { fields: ["url", "alternativeText", "name"] },
       },
     }),
