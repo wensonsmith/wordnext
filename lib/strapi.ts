@@ -29,7 +29,10 @@ const request = async <T>(path: string, params: StrapiQuery = {}): Promise<T> =>
 
   const query = qs.stringify(params, { encodeValuesOnly: true })
   const api = `${host}/api${path}${query ? `?${query}` : ""}`
-  const timeout = Number(process.env.NEXT_TIMEOUT ?? 10_000)
+  const configuredTimeout = Number(process.env.NEXT_TIMEOUT ?? 10)
+  const timeout = Number.isFinite(configuredTimeout) && configuredTimeout > 0
+    ? configuredTimeout * 1_000
+    : 10_000
   const headers: HeadersInit = token
     ? { authorization: `Bearer ${token}` }
     : {}

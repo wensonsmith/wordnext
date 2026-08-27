@@ -48,4 +48,4 @@ git push -u origin codex/功能名称
 3. 更新使用该字段的页面或组件。
 4. 运行完整检查流程。
 
-部署环境至少需要配置 `NEXT_STRAPI_URL` 和 `NEXT_STRAPI_TOKEN`；媒体使用相对 URL 时，还要配置 `NEXT_PUBLIC_IMAGE_URL`。导航会自动读取首个可见导航，也可以通过 `NEXT_STRAPI_NAVIGATION` 明确指定导航的 Strapi v5 `documentId` 或 `slug`。
+部署环境至少需要配置 `NEXT_STRAPI_URL` 和 `NEXT_STRAPI_TOKEN`；媒体使用相对 URL 时，还要配置 `NEXT_PUBLIC_IMAGE_URL`。`NEXT_TIMEOUT` 的单位是秒。导航会自动读取首个可见导航，也可以通过 `NEXT_STRAPI_NAVIGATION` 明确指定导航的 Strapi v5 `documentId` 或 `slug`。
