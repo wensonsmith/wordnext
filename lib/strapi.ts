@@ -1,5 +1,6 @@
 import "server-only"
 
+import { unstable_rethrow } from "next/navigation"
 import qs from "qs"
 
 import type {
@@ -8,6 +9,7 @@ import type {
   Friend,
   Memo,
   Navigation,
+  NavigationDefinition,
   Profile,
   Project,
   Site,
@@ -72,5 +74,42 @@ export const fetchProjects = (params: StrapiQuery = {}) =>
 export const fetchFriends = (params: StrapiQuery = {}) =>
   request<StrapiCollectionResponse<Friend>>("/friends", params)
 
-export const fetchNavigations = (id = 1) =>
-  request<Navigation[]>(`/navigation/render/${id}`, { type: "TREE", menu: true })
+const fallbackNavigations: Navigation[] = [
+  {
+    id: -1,
+    title: "#站点",
+    path: "/",
+    items: [
+      { id: -2, title: "#文章", path: "/articles" },
+      { id: -3, title: "#关于", path: "/about" },
+    ],
+  },
+]
+
+export const fetchNavigations = async (): Promise<Navigation[]> => {
+  try {
+    let idOrSlug = process.env.NEXT_STRAPI_NAVIGATION
+
+    if (!idOrSlug) {
+      const definitions = await request<NavigationDefinition[]>("/navigation")
+      const navigation = definitions.find(({ visible }) => visible) ?? definitions[0]
+      idOrSlug = navigation?.documentId ?? navigation?.slug
+    }
+
+    if (!idOrSlug) {
+      return fallbackNavigations
+    }
+
+    return await request<Navigation[]>(
+      `/navigation/render/${encodeURIComponent(idOrSlug)}`,
+      { type: "TREE", menu: true },
+    )
+  } catch (error) {
+    unstable_rethrow(error)
+    console.error(
+      "Strapi navigation is unavailable; using fallback links.",
+      error instanceof Error ? error.message : "Unknown error",
+    )
+    return fallbackNavigations
+  }
+}

@@ -109,3 +109,11 @@ export type NavigationItem = {
 export type Navigation = NavigationItem & {
   items: NavigationItem[]
 }
+
+export type NavigationDefinition = {
+  id: number
+  documentId: string
+  name: string
+  slug: string
+  visible: boolean
+}
