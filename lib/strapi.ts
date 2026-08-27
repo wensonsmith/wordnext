@@ -44,7 +44,13 @@ const request = async <T>(path: string, params: StrapiQuery = {}): Promise<T> =>
   })
 
   if (!response.ok) {
-    throw new Error(`Strapi request failed (${response.status}) for ${path}`)
+    const errorBody = await response.json().catch(() => null) as {
+      error?: { message?: string }
+    } | null
+    const detail = errorBody?.error?.message
+    throw new Error(
+      `Strapi request failed (${response.status}) for ${path}${detail ? `: ${detail}` : ""}`,
+    )
   }
 
   return response.json() as Promise<T>
