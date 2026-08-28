@@ -4,7 +4,7 @@ import type { WalineInitOptions, WalineInstance } from "@waline/client"
 import { useTheme } from "next-themes"
 import { useEffect, useRef } from "react"
 
-import "@waline/client/dist/waline.css"
+import "@waline/client/waline.css"
 
 export type WalineOptions = Pick<WalineInitOptions, "serverURL"> & { path: string }
 
@@ -29,7 +29,7 @@ export default function Waline({ path, serverURL }: WalineOptions) {
         pageview: true,
         lang: "zh",
         imageUploader: false,
-        copyright: false,
+        noCopyright: true,
         dark: resolvedTheme === "dark",
       })
     }

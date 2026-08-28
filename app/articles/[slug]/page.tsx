@@ -80,7 +80,7 @@ export default async function ArticlePage({ params }: ArticlePageProps) {
             </div>
             <div className="items-center gap-1 hidden">
               <RiBookOpenLine />
-              <div className="waline-pageview-count" />
+              <div className="waline-pageview-count" data-path={article.slug} />
             </div>
           </div>
         </div>
